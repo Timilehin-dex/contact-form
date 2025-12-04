@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="output.css" />
+    <title>Frontend Mentor | Contact form</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body class="bg-[hsl(148,38%,91%)] text-[hsl(186,15%,59%)] font-[Karla]">
+    <main class="max-w-4xl mx-auto my-30 px-5">
+      <section class="bg-white p-8 rounded-xl">
+        <h1 class="text-3xl font-bold mb-5 text-[hsl(187,24%,22%)]">
+          Contact Us
+        </h1>
+        <form id="contactForm" class="space-y-4" novalidate>
+          <!-- Name Fields -->
+          <div class="grid md:grid-cols-2 gap-4">
+            <!-- first name -->
+            <div class="flex flex-col gap-2">
+              <label for="firstName">First Name</label>
+              <input
+                id="firstName"
+                name="firstName"
+                type="text"
+                required
+                class="border border-[hsl(186,15%,59%)] px-6 py-3 rounded-md focus:outline-none focus:border-[hsl(169,82%,27%)] hover:border-[hsl(169,82%,27%)] cursor-pointer"
+              />
+              <p
+                id="firstNameError"
+                class="text-[hsl(0,66%,54%)] text-sm mt-1 hidden"
+              >
+                This field is required
+              </p>
+            </div>
+            <!-- last name -->
+            <div class="flex flex-col gap-2">
+              <label for="lastName">Last Name</label>
+              <input
+                id="lastName"
+                name="lastName"
+                type="text"
+                required
+                class="border border-[hsl(186,15%,59%)] px-6 py-3 rounded-md focus:outline-none focus:border-[hsl(169,82%,27%)] hover:border-[hsl(169,82%,27%)] cursor-pointer"
+              />
+              <p
+                id="lastNameError"
+                class="text-[hsl(0,66%,54%)] text-sm mt-1 hidden"
+              >
+                This field is required
+              </p>
+            </div>
+          </div>
+          <!-- Email -->
+          <div class="flex flex-col gap-2">
+            <label for="email">Email Address</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              required
+              class="border border-[hsl(186,15%,59%)] px-6 py-3 rounded-md focus:outline-none focus:border-[hsl(169,82%,27%)] hover:border-[hsl(169,82%,27%)] cursor-pointer"
+            />
+            <p
+              id="emailError"
+              class="text-[hsl(0,66%,54%)] text-sm mt-1 hidden"
+            >
+              Please enter a valid email address
+            </p>
+          </div>
+          <!-- Query Type -->
+          <div>
+            <label>Query Type</label>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+              <!-- General -->
+              <label
+                class="flex items-center gap-3 border border-[hsl(186,15%,59%)] px-6 py-3 rounded-md cursor-pointer has-checked:bg-[hsl(148,38%,91%)]"
+              >
+                <input
+                  type="radio"
+                  name="query"
+                  value="general"
+                  class="w-5 h-5 accent-[hsl(169,82%,27%)]"
+                  required
+                />
+                <span>General Enquiry</span>
+              </label>
+              <!-- Support -->
+              <label
+                class="peer flex items-center gap-3 border border-[hsl(186,15%,59%)] px-6 py-3 rounded-md cursor-pointer has-checked:bg-[hsl(148,38%,91%)]"
+              >
+                <input
+                  type="radio"
+                  name="query"
+                  value="support"
+                  class="w-5 h-5 accent-[hsl(169,82%,27%)]"
+                  required
+                />
+                <span>Support Request</span>
+              </label>
+            </div>
+            <p
+              id="queryError"
+              class="text-[hsl(0,66%,54%)] text-sm mt-2 hidden"
+            >
+              Please select a query type
+            </p>
+          </div>
+          <!-- Message -->
+          <div class="flex flex-col gap-2">
+            <label for="message" class="text-[hsl(186,15%,57%)]">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              class="peer border border-[hsl(186,15%,59%)] px-6 py-3 h-32 rounded-md focus:outline-none focus:border-[hsl(169,82%,27%)] hover:border-[hsl(169,82%,27%)] cursor-pointer"
+            ></textarea>
+            <p
+              id="messageError"
+              class="text-[hsl(0,66%,54%)] text-sm mt-1 hidden"
+            >
+              This field is required
+            </p>
+          </div>
+          <!-- Consent -->
+          <div>
+            <div class="flex items-center gap-3">
+              <input
+                id="consent"
+                type="checkbox"
+                required
+                class="peer w-4.5 h-4.5 accent-[hsl(169,82%,27%)] cursor-pointer"
+              />
+              <label for="consent" class="cursor-pointer">
+                I consent to being contacted by the team
+              </label>
+            </div>
+            <p
+              id="consentError"
+              class="text-[hsl(0,66%,54%)] text-sm mt-1 hidden"
+            >
+              You must consent before submitting
+            </p>
+          </div>
+          <!-- Submit button -->
+          <button
+            type="submit"
+            class="w-full bg-[hsl(169,82%,27%)] text-white p-3 rounded-md hover:bg-[hsl(187,24%,22%)] transition cursor-pointer"
+          >
+            Submit
+          </button>
+        </form>
+      </section>
+    </main>
+    <!-- success message -->
+    <div id="successMessage" class="hidden">
+      <main class="fixed inset-0 h-fit mt-8">
+        <section
+          class="bg-[hsl(187,24%,22%)] max-w-lg mx-auto p-5 rounded-lg space-y-2"
+        >
+          <div class="flex gap-3">
+            <img src="assets/images/icon-success-check.svg" alt="" />
+            <h1 class="text-white text-lg">Message Sent!</h1>
+          </div>
+          <p class="text-[hsl(148,38%,91%)]">
+            Thanks for completing the form. We'll be in touch soon!
+          </p>
+        </section>
+      </main>
+    </div>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Your Name Here</a>.
+    </div>
+    <script>
+      const form = document.getElementById("contactForm");
+      let firstSubmitAttempt = false;
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // stop form from submitting
+
+        firstSubmitAttempt = true; // user has tried submitting
+
+        validateForm(); // run validation
+
+        // If everything is valid, you can finally submit here:
+        if (form.checkValidity()) {
+          form.reset();
+          // SHOW SUCCESS MESSAGE
+          document.getElementById("successMessage").classList.remove("hidden");
+        }
+      });
+
+      // Validate all fields
+      function validateForm() {
+        validateField("firstName", "firstNameError");
+        validateField("lastName", "lastNameError");
+        validateEmail();
+        validateQuery();
+        validateField("message", "messageError");
+        validateCheckbox();
+      }
+
+      // Generic field validation (text + textarea)
+      function validateField(inputId, errorId) {
+        const input = document.getElementById(inputId);
+        const error = document.getElementById(errorId);
+
+        if (!firstSubmitAttempt) return; // hide errors until the user tries submitting
+
+        if (input.value.trim() === "") {
+          error.classList.remove("hidden");
+          input.classList.add("border-[hsl(0,66%,54%)]");
+        } else {
+          error.classList.add("hidden");
+          input.classList.remove("border-[hsl(0,66%,54%)]");
+        }
+      }
+
+      // Email validation
+      function validateEmail() {
+        const input = document.getElementById("email");
+        const error = document.getElementById("emailError");
+
+        if (!firstSubmitAttempt) return;
+
+        if (!input.validity.valid) {
+          error.classList.remove("hidden");
+          input.classList.add("border-[hsl(0,66%,54%)]");
+        } else {
+          error.classList.add("hidden");
+          input.classList.remove("border-[hsl(0,66%,54%)]");
+        }
+      }
+
+      // Radio buttons
+      function validateQuery() {
+        const radios = document.querySelectorAll("input[name='query']");
+        const error = document.getElementById("queryError");
+        let selected = false;
+
+        radios.forEach((r) => {
+          if (r.checked) selected = true;
+        });
+
+        if (!firstSubmitAttempt) return;
+
+        if (!selected) {
+          error.classList.remove("hidden");
+        } else {
+          error.classList.add("hidden");
+        }
+      }
+
+      // Checkbox
+      function validateCheckbox() {
+        const checkbox = document.getElementById("consent");
+        const error = document.getElementById("consentError");
+
+        if (!firstSubmitAttempt) return;
+
+        if (!checkbox.checked) {
+          error.classList.remove("hidden");
+        } else {
+          error.classList.add("hidden");
+        }
+      }
+    </script>
+  </body>
+</html>
