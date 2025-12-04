@@ -174,7 +174,7 @@
     </main>
     <!-- success message -->
     <div id="successMessage" class="hidden">
-      <main class="fixed inset-0 h-fit mt-8">
+      <main class="fixed inset-0 h-fit mt-8 mx-5">
         <section
           class="bg-[hsl(187,24%,22%)] max-w-lg mx-auto p-5 rounded-lg space-y-2"
         >
@@ -191,7 +191,7 @@
     <div class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-      Coded by <a href="#">Your Name Here</a>.
+      Coded by <a href="#">Olusoyemi Oluwatimilehin</a>.
     </div>
     <script>
       const form = document.getElementById("contactForm");
@@ -208,7 +208,15 @@
         if (form.checkValidity()) {
           form.reset();
           // SHOW SUCCESS MESSAGE
-          document.getElementById("successMessage").classList.remove("hidden");
+          const popup = document.getElementById("successMessage");
+
+          // Show popup
+          popup.classList.remove("hidden");
+
+          // Hide popup after 3 seconds
+          setTimeout(() => {
+            popup.classList.add("hidden");
+          }, 3000);
         }
       });
 
@@ -231,10 +239,10 @@
 
         if (input.value.trim() === "") {
           error.classList.remove("hidden");
-          input.classList.add("border-[hsl(0,66%,54%)]");
+          input.classList.add("border-red-700");
         } else {
           error.classList.add("hidden");
-          input.classList.remove("border-[hsl(0,66%,54%)]");
+          input.classList.remove("border-red-700");
         }
       }
 
@@ -247,10 +255,10 @@
 
         if (!input.validity.valid) {
           error.classList.remove("hidden");
-          input.classList.add("border-[hsl(0,66%,54%)]");
+          input.classList.add("border-red-700");
         } else {
           error.classList.add("hidden");
-          input.classList.remove("border-[hsl(0,66%,54%)]");
+          input.classList.remove("border-red-700");
         }
       }
 
