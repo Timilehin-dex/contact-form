@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -79,6 +79,7 @@
               type="email"
               name="email"
               required
+              pattern="^[^@]+@[^@]+\.(com|net|org)$"
               class="border border-[hsl(186,15%,59%)] px-6 py-3 rounded-md focus:outline-none focus:border-[hsl(169,82%,27%)] hover:border-[hsl(169,82%,27%)] cursor-pointer"
             />
             <p
@@ -107,7 +108,7 @@
               </label>
               <!-- Support -->
               <label
-                class="peer flex items-center gap-3 border border-[hsl(186,15%,59%)] px-6 py-3 rounded-md cursor-pointer has-checked:bg-[hsl(148,38%,91%)]"
+                class="flex items-center gap-3 border border-[hsl(186,15%,59%)] px-6 py-3 rounded-md cursor-pointer has-checked:bg-[hsl(148,38%,91%)]"
               >
                 <input
                   type="radio"
@@ -294,6 +295,82 @@
           error.classList.add("hidden");
         }
       }
+
+      //REAL TIME VALIDATION//
+
+      //   firstName input restrictions
+      const firstName = document.getElementById("firstName");
+      firstName.addEventListener("input", () => {
+        // Remove numbers and symbols
+        firstName.value = firstName.value.replace(/[^a-zA-Z\s]/g, "");
+
+        // Mark invalid if empty
+        firstName.dataset.invalid =
+          firstName.value.trim() === "" ? "true" : "false";
+
+        // Real-time validation
+        validateField("firstName", "firstNameError");
+      });
+
+      //   lastName input restrictions
+      const lastName = document.getElementById("lastName");
+      lastName.addEventListener("input", () => {
+        // Remove numbers and symbols
+        lastName.value = lastName.value.replace(/[^a-zA-Z\s]/g, "");
+
+        // Mark invalid if empty
+        lastName.dataset.invalid =
+          lastName.value.trim() === "" ? "true" : "false";
+
+        // Real-time validation
+        validateField("lastName", "lastNameError");
+      });
+
+      //   email input restrictions
+      const email = document.getElementById("email");
+      email.addEventListener("input", () => {
+        // Mark invalid if empty
+        email.dataset.invalid = email.value.trim() === "" ? "true" : "false";
+
+        // Real-time validation
+        validateEmail("email", "emailError");
+      });
+
+      //   message input restrictions
+      const message = document.getElementById("message");
+      message.addEventListener("input", () => {
+        // Mark invalid if empty
+        message.dataset.invalid =
+          message.value.trim() === "" ? "true" : "false";
+
+        // Real-time validation
+        validateField("message", "messageError");
+      });
+
+      // Checkbox restrictions
+      const consent = document.getElementById("consent");
+      consent.addEventListener("change", () => {
+        // Mark invalid if not checked
+        consent.dataset.invalid = consent.checked ? "false" : "true";
+
+        // Real-time validation
+        validateCheckbox();
+      });
+
+      // Radio button restrictions
+      const radios = document.querySelectorAll("input[name='query']");
+      radios.forEach((radio) => {
+        radio.addEventListener("change", () => {
+          // Check if any radio is selected
+          const anySelected = Array.from(radios).some((r) => r.checked);
+          radios.forEach(
+            (r) => (r.dataset.invalid = anySelected ? "false" : "true"),
+          );
+
+          // Real-time validation
+          validateQuery();
+        });
+      });
     </script>
   </body>
 </html>
